@@ -18,7 +18,7 @@ You can deploy GLPI + database by creating 2 files:
 - **docker-compose.yml**
 - **glpi.env**
 
-### docker-compose.yml ###
+### docker-compose.yml
 
 ```yml
 glpi:
@@ -36,7 +36,7 @@ mysql:
     - ./glpi.env
 ```
 
-glpi.env
+### glpi.env
 
 ```env
 MYSQL_ROOT_PASSWORD=rootpasswd
