@@ -6,7 +6,6 @@ RUN apt-get install -y \
   php5 \
   php5-mysql \
   php5-ldap \
-  # php5-imap \
   php5-xmlrpc \
   curl \
   php5-curl \
