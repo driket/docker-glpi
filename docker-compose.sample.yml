@@ -1,0 +1,11 @@
+glpi:
+  build: .
+  ports:
+    - "8090:80"
+  links:
+    - mysql:db
+
+mysql:
+  image: mariadb
+  env_file:
+    - ./glpi.env
