@@ -8,17 +8,42 @@ You can:
 - link to an existing database.
 - or create a new one easily with docker-compose.
 
+## Deploy GLPI only (no database)
+
+```docker run -it -d -p 80:80 driket54/glpi```
+
 ## Deploy with docker-compose
 
 You can deploy GLPI + database by creating 2 files:
 - **docker-compose.yml**
 - **glpi.env**
 
-### Use samples ###
+### docker-compose.yml ###
 
-```bash
-mv docker-compose.sample.yml docker-compose.yml
-mv glpi.sample.env glpi.env
+```yml
+glpi:
+  image: driket54/glpi
+  ports:
+    - "8090:80"
+  links:
+    - mysql:db
+  env_file:
+    - ./glpi.env
+
+mysql:
+  image: mariadb
+  env_file:
+    - ./glpi.env
+```
+
+glpi.env
+
+```env
+MYSQL_ROOT_PASSWORD=rootpasswd
+MYSQL_DATABASE=glpi
+MYSQL_USER=glpi
+MYSQL_PASSWORD=glpipaswd
+GLPI_SOURCE_URL=https://forge.glpi-project.org/attachments/download/2020/glpi-0.85.4.tar.gz
 ```
 
 ### Run docker-compose
@@ -27,6 +52,13 @@ mv glpi.sample.env glpi.env
 docker-compose build
 docker-compose up
 ```
+
+### Configure new database
+
+Access your container with HTTP.
+Use infos you setup in glpi.env file
+
+![alt tag](doc/glpi-db-setup.png)
 
 ## FAQ
 

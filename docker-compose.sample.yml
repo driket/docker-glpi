@@ -4,6 +4,8 @@ glpi:
     - "8090:80"
   links:
     - mysql:db
+  env_file:
+    - ./glpi.env
 
 mysql:
   image: mariadb
