@@ -1,5 +1,5 @@
-MAINTAINER cedric@zestprod.com
 FROM ubuntu
+MAINTAINER cedric@zestprod.com
 RUN apt-get update
 RUN apt-get install -y \
   wget \
