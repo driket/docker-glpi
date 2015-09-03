@@ -6,7 +6,7 @@ glpidata:
 
 # GLPI container
 glpi:
-  build: .
+  image: driket54/glpi
   ports:
     - "8090:80"
   links:
