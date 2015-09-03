@@ -58,7 +58,7 @@ docker-compose up
 Access your container with HTTP.
 Use infos you setup in glpi.env file
 
-![alt tag](doc/glpi-db-setup.png)
+![alt tag](https://raw.githubusercontent.com/driket/docker-glpi/master/doc/glpi-db-setup.png)
 
 ## FAQ
 
