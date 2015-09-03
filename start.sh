@@ -26,7 +26,9 @@ fi
 
 VHOST=/etc/apache2/sites-enabled/000-default.conf
 
+# Use /var/www/html/glpi as DocumentRoot
 sed -i -- 's/\/var\/www\/html/\/var\/www\/html\/glpi/g' $VHOST
+# Remove ServerSignature (secutiry)
 awk '/<\/VirtualHost>/{print "ServerSignature Off" RS $0;next}1' $VHOST > tmp && mv tmp $VHOST
 
 # HTACCESS="/var/www/html/.htaccess"
