@@ -10,7 +10,9 @@ GLPI_SOURCE_URL=${GLPI_SOURCE_URL:-"https://forge.glpi-project.org/attachments/d
 
 ### INSTALL GLPI IF NOT INSTALLED ALREADY ######################################
 
-if [ ! -d "$GLPI_DIR" ]; then
+if [ "$(ls -A $GLPI_DIR)" ]; then
+  echo "GLPI is already installed at ${GLPI_DIR}"
+else
   echo '-----------> Install GLPI'
   echo "Using ${GLPI_SOURCE_URL}"
   wget -O /tmp/glpi.tar.gz $GLPI_SOURCE_URL --no-check-certificate
