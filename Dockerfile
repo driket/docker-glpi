@@ -16,4 +16,5 @@ WORKDIR /var/www/html
 COPY start.sh /opt/
 RUN chmod +x /opt/start.sh
 CMD /opt/start.sh
+RUN usermod -u 1000 www-data
 EXPOSE 80
