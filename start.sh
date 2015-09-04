@@ -43,8 +43,9 @@ chown www-data .
 
 # stop apache service
 # service apache2 stop
+service apache2 restart
 
 # start apache in foreground
 # source /etc/apache2/envvars
 # /usr/sbin/apache2 -D FOREGROUND
-tail -f /var/log/apache2/error.log
+tail -f /var/log/apache2/error.log -f /var/log/apache2/access.log
