@@ -39,10 +39,6 @@ awk '/<\/VirtualHost>/{print "AllowOverride All" RS $0;next}1' $VHOST > tmp && m
 sed -i -- '/<\/Directory/d' $VHOST
 awk '/<\/VirtualHost>/{print "</Directory>" RS $0;next}1' $VHOST > tmp && mv tmp $VHOST
 
-
-
-</Directory>
-
 # HTACCESS="/var/www/html/.htaccess"
 # /bin/cat <<EOM >$HTACCESS
 # RewriteEngine On
