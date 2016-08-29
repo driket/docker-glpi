@@ -1,7 +1,7 @@
 docker-compose.yml
 glpi.env
 glpi_github
-glpi_tmp
+glpi_tmp/*
 glpi-9.1-RC1.tar.gz
 glpi
 tmp
