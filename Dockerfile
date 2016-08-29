@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:trusty
 MAINTAINER cedric@zestprod.com
 RUN apt-get update
 RUN apt-get install -y apache2
