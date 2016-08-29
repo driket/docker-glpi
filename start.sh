@@ -36,7 +36,7 @@ sed -i -- '/<Directory /d' $VHOST
 awk '/<\/VirtualHost>/{print "<Directory \"/var/www/html/glpi\">" RS $0;next}1' $VHOST > tmp && mv tmp $VHOST
 sed -i -- '/AllowOverride All/d' $VHOST
 awk '/<\/VirtualHost>/{print "AllowOverride All" RS $0;next}1' $VHOST > tmp && mv tmp $VHOST
-sed -i -- '/<//Directory /d' $VHOST
+sed -i -- '/<\/Directory/d' $VHOST
 awk '/<\/VirtualHost>/{print "</Directory>" RS $0;next}1' $VHOST > tmp && mv tmp $VHOST
 
 
