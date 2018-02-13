@@ -1,31 +1,26 @@
-# GLPI persistent data
-glpidata:
-  image: ubuntu
-  volumes:
-    - /var/www/html/glpi
+version: '2'
 
-# GLPI container
-glpi:
-  image: driket54/glpi
-  ports:
-    - "8090:80"
-  links:
-    - mysql:db
-  env_file:
-    - ./glpi.env
-  volumes_from:
-    - glpidata
+services:
+    # GLPI container
+    glpi:
+        build: .
+        ports:
+            - "8085:80"
+        links:
+            - mysql:db
+        env_file:
+            - ./glpi.env
+        volumes:
+            - glpi_data:/var/www/html/glpi
 
-# Database persistent data
-mysqldata:
-  image: ubuntu
-  volumes:
-    - /var/lib/mysql
+    # Database container
+    mysql:
+        image: mariadb
+        env_file:
+            - ./glpi.env
+        volumes:
+            - mysql_data:/var/lib/mysql
 
-# Database container
-mysql:
-  image: mariadb
-  env_file:
-    - ./glpi.env
-  volumes_from:
-    - mysqldata
+volumes:
+    glpi_data: {}
+    mysql_data: {}
