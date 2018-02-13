@@ -2,15 +2,26 @@ FROM ubuntu:trusty
 MAINTAINER cedric@zestprod.com
 RUN apt-get update
 RUN apt-get install -y apache2
-RUN apt-get install -y \
+
+RUN sudo apt-get install -y software-properties-common \
+  && add-apt-repository ppa:ondrej/php \
+  && apt-get update
+
+RUN apt-get install -y --force-yes \
   wget \
-  php5 \
-  php5-mysql \
-  php5-ldap \
-  php5-xmlrpc \
+  php5.6 \
+  php5.6-mysql \
+  php5.6-ldap \
+  php5.6-xmlrpc \
   curl \
-  php5-curl \
-  php5-gd
+  php5.6-curl \
+  php5.6-gd \
+  php5.6-mbstring \
+  php5.6-simplexml \
+  php5.6-xml \
+  php5.6-apcu \
+  php5.6-imap
+
 RUN a2enmod rewrite && service apache2 stop
 WORKDIR /var/www/html
 COPY start.sh /opt/
